@@ -23,7 +23,7 @@ elseif(WIN32)
 	if(MINGW)
 		add_definitions(-DMINGW32)
 	endif()
-    set(DIRENT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/dirent/include)
+    set(DIRENT_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/dirent/include)
     include_directories(${DIRENT_INCLUDE_DIR})
 endif()
 
@@ -38,13 +38,13 @@ endif ()
 
 add_definitions(-DCUSTOM_IMGUIFILEDIALOG_CONFIG="../../../CustomImGuiFileDialogConfig.h")
    
-file(GLOB CUSTOM_SOURCES ${CMAKE_SOURCE_DIR}/CustomImGuiFileDialogConfig.h)
+file(GLOB CUSTOM_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/CustomImGuiFileDialogConfig.h)
 file(GLOB RES_SOURCES 
-		${CMAKE_SOURCE_DIR}/CustomFont.cpp 
-		${CMAKE_SOURCE_DIR}/CustomFont.h)
+		${CMAKE_CURRENT_SOURCE_DIR}/CustomFont.cpp 
+		${CMAKE_CURRENT_SOURCE_DIR}/CustomFont.h)
 file(GLOB IMGUIFILEDIALOG_SOURCES 
-		${CMAKE_SOURCE_DIR}/ImGuiFileDialog/*.cpp
-		${CMAKE_SOURCE_DIR}/ImGuiFileDialog/*.h)
+		${CMAKE_CURRENT_SOURCE_DIR}/ImGuiFileDialog/*.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/ImGuiFileDialog/*.h)
 source_group(src\\Custom FILES ${CUSTOM_SOURCES})
 source_group(src\\Res FILES ${RES_SOURCES})
 source_group(src\\ImGuiFileDialog FILES ${IMGUIFILEDIALOG_SOURCES})
@@ -84,7 +84,7 @@ if (APPLE)
 			MACOSX_BUNDLE_SHORT_VERSION_STRING ""
 			MACOSX_BUNDLE_LONG_VERSION_STRING ""
 			##MACOSX_BUNDLE_ICON_FILE icon.icns
-			MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/MacOSXBundleInfo.plist.in")
+			MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/MacOSXBundleInfo.plist.in")
 elseif(WIN32)
 	set_target_properties(${PROJECT} PROPERTIES OUTPUT_NAME "ImGuiFileDialog")
 elseif(UNIX)
@@ -92,7 +92,7 @@ elseif(UNIX)
 endif()
 set_target_properties(${PROJECT} PROPERTIES CXX_STANDARD 11)
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}")
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
 install(TARGETS ${PROJECT} DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
