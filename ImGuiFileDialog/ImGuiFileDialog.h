@@ -178,7 +178,9 @@ namespace igfd
 	public:
 		static ImGuiFileDialog* Instance()
 		{
-			static auto *_instance = new ImGuiFileDialog();
+			static ImGuiFileDialog* _instance = nullptr;
+			if (!_instance)
+				_instance = new ImGuiFileDialog();
 			return _instance;
 		}
 
